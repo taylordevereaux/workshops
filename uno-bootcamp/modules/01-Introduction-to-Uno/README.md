@@ -2,7 +2,7 @@
 
 ## 📖 Overview
 
-This workshop provides a walk-through of the basics of creating a application with the [Uno Platform][uno-platform]. Each module contains some background information on major features and concepts in the Uno Platform, and includes activities to apply what you have learned.
+This workshop provides a walk-through of the basics of creating an application with the [Uno Platform][uno-platform]. Each module contains some background information on major features and concepts in the Uno Platform, and includes activities to apply what you have learned.
 
 By the end of this module you will:
 
@@ -57,6 +57,7 @@ Instead the Uno Platform provides a common set of layout and controls, designed 
 1. Name the Project name as `Todo`.
 1. Specify the Location as a folder in the workshop git repostiory.
 1. Press `Create` to generate your Uno application.
+1. Make sure to add Newtonsoft.Json package to all heads, and Uno.Wasm.WebSockets to the Wasm head.
 
 ## 💡 Project Structure
 
@@ -113,14 +114,14 @@ Low-level foundation for the implementation of Uno.UI. It's basically a bunch of
 
 ### Uno.UI
 
-This is the main part of Uno.UI. Not only it contains implementation of controls on all supported platforms, but also a code generator and even a _code analyzer_ to help developers when they are using it.
+This is the main part of Uno.UI. It not only contains implementation of controls on all supported platforms, but also a code generator and even a _code analyzer_ to help developers when they are using it.
 
 [Sources][uno-ui-sources] /
 [Documentation][uno-ui-docs]
 
 ### Uno.UniversalImageLoader
 
-This is the binding for the excellent nostra13's [`UniversalImageLoader`](https://github.com/nostra13/Android-Universal-Image-Loader) to improve the performance of image loading on Android.
+This is the Xamarin.Android binding library for the excellent nostra13's [`UniversalImageLoader`](https://github.com/nostra13/Android-Universal-Image-Loader) to improve the performance of image loading on Android.
 
 The usage of this package is optional, but there's no good reason to remove it except if you want to implement your own image loader.
 
@@ -128,7 +129,7 @@ The usage of this package is optional, but there's no good reason to remove it e
 
 ### Uno.Wasm.Bootstrap
 
-That's for wasm. It's a toolkit done by Uno to easily run .NET code in a browser using Mono-Wasm.
+This is for wasm. It's a toolkit done by Uno to easily run .NET code in a browser using Mono-Wasm.
 
 [Sources & documentation][uno-wasm-sources]
 
