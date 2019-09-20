@@ -5,11 +5,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="using:TodoApp.Shared.ViewModels"
+    xmlns:converters="using:TodoApp.Shared.Converters"
     mc:Ignorable="d">
 
     <Page.DataContext>
         <viewModels:MainPageViewModel />
     </Page.DataContext>
+
+    <Page.Resources>
+        <converters:FromStateItemsRemainingToPluralConverter x:Key="FromStateItemsRemainingToPluralConverter" />
+        <converters:FromEnumerableToCountConverter x:Key="FromEnumerableToCountConverter" />
+    </Page.Resources>
+
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -31,22 +38,26 @@
         <!--Options and info-->
         <StackPanel Grid.Row="1" Orientation="Horizontal">
 
-            <RadioButton Command="{Binding 🎯 What Should This Be Bound To}"
+            <RadioButton Command="{Binding ViewAll}"
                          GroupName="Tabs"
                          IsChecked="True">
                 <TextBlock>
-                    VIEW ALL<Run Text="{Binding State.Todos, Converter={StaticResource 🎯 Put Right Converter Here}}" />
+                    VIEW ALL<Run Text="{Binding State.Todos, Converter={StaticResource FromEnumerableToCountConverter}}" />
                 </TextBlock>
             </RadioButton>
 
             <RadioButton Command="{Binding ViewActive}"
                          GroupName="Tabs">
-                <!-- 🎯 Content for Active tab -->
+                <TextBlock>
+                    VIEW ACTIVE<Run Text="{Binding State.ActiveTodos, Converter={StaticResource FromEnumerableToCountConverter}}" />
+                </TextBlock>
             </RadioButton>
 
             <RadioButton Command="{Binding ViewInactive}"
                          GroupName="Tabs">
-                <!-- 🎯 Content for Inactive tab -->
+                <TextBlock>
+                    VIEW INACTIVE<Run Text="{Binding State.InactiveTodos, Converter={StaticResource FromEnumerableToCountConverter}}" />
+                </TextBlock>
             </RadioButton>
         </StackPanel>
 
