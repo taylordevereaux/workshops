@@ -9,7 +9,7 @@ namespace TodoApp.Shared.Controls
     public partial class NativeProgress : Control
     {
         /// 🛈 base("progress") would create a <progress> and </progress> HTML element.
-        public NativeProgress()  : base ("TODO"); // 🎯 Instantiate the correct HTML element.
+        public NativeProgress()  : base ("progress") // 🎯 Instantiate the correct HTML element.
         {
             MinHeight = 20;
             HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -44,8 +44,8 @@ namespace TodoApp.Shared.Controls
             var calculatedMax = Maximum - min;
 
             // 🛈 Usage: SetAttribute("HtmlAttributeName", "Value");
-            SetAttribute("TODO", calculatedValue);  // 🎯 Set HTML attribute to calculatedValue
-			SetAttribute("TODO", calculatedMax);    // 🎯 Set HTML attribute to calculatedMax            
+            SetAttribute("value", calculatedValue.ToString());  // 🎯 Set HTML attribute to calculatedValue
+			SetAttribute("max", calculatedMax.ToString());    // 🎯 Set HTML attribute to calculatedMax            
         }
     }
 }
