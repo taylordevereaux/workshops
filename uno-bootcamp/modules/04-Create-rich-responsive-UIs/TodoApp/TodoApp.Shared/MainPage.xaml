@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Uno.UI.Toolkit"
     xmlns:viewModels="using:TodoApp.Shared.ViewModels"
     xmlns:converters="using:TodoApp.Shared.Converters"
     mc:Ignorable="d">
@@ -27,7 +28,8 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" toolkit:VisibleBoundsPadding.PaddingMask="Top">
+
             <TextBlock Text="TODOS"
                        FontWeight="Bold"
                        HorizontalAlignment="Center"
@@ -36,7 +38,7 @@
 
 
         <!--Options and info-->
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" toolkit:VisibleBoundsPadding.PaddingMask="Left,Right">
 
             <RadioButton Command="{Binding ViewAll}"
                          GroupName="Tabs"
@@ -99,7 +101,7 @@
             <!-- Grid.Row="2" is reserved for next module -->
 
             <Grid Grid.Row="3"
-                  Visibility="{Binding Todos, Converter={StaticResource FromAnyToInvisibleConverter}}">
+                  >
                 <TextBlock Text="There are no TODOS" />
             </Grid>
 
