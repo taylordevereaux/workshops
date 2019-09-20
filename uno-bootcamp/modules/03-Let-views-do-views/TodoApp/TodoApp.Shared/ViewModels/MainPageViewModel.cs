@@ -19,8 +19,8 @@ namespace TodoApp.Shared.ViewModels
         {
             CreateNew = new SimpleCommand(ExecuteCreateNew);
             ViewAll = new SimpleCommand(() => Filter = 0);
-            ViewActive = new SimpleCommand(() => throw new NotImplementedException("🎯 Create a `ICommand` that filters the ViewModel to display only Active todos."));
-            ViewInactive = new SimpleCommand(() => throw new NotImplementedException("🎯 Create a `ICommand` that filters the ViewModel to display only Inactive todos."));
+            ViewActive = new SimpleCommand(() => Filter = 1);
+            ViewInactive = new SimpleCommand(() => Filter = 2);
         }
 
         public State State
@@ -28,9 +28,9 @@ namespace TodoApp.Shared.ViewModels
             get => _state;
             private set
             {
-                throw new NotImplementedException("🎯 Ensure that updating the `State` property also updates the backing property");
-                throw new NotImplementedException("🎯 Ensure that updating the `State` property also invokes `OnPropertyChanged` for `MainPageViewModel` so that databound controls update.");
-                throw new NotImplementedException("🎯 Ensure that updating the `State` property also invokes `OnPropertyChanged` for `MainPageViewModel.Todo` so that databound controls update.");
+                this._state = value;
+                OnPropertyChanged(nameof(State));
+                OnPropertyChanged(nameof(Todos));
             }
         }
 
@@ -40,11 +40,11 @@ namespace TodoApp.Shared.ViewModels
             {
                 if(Todos.Count() == 0)
                 {
-                    throw new NotImplementedException("🎯 Ensure that the `IsEmpty` property returns the appropriate `Windows.UI.Xaml.Visibility` so that the majority of databound controls disppear when updated.");
+                    return Visibility.Collapsed;
                 }
                 else
                 {
-                    throw new NotImplementedException("🎯 Ensure that the `IsEmpty` property returns the appropriate `Windows.UI.Xaml.Visibility` so that the majority of databound controls appear when updated.");
+                    return Visibility.Visible;
                 }
             }
         }
@@ -54,9 +54,9 @@ namespace TodoApp.Shared.ViewModels
             get => _filter;
             set
             {
-                throw new NotImplementedException("🎯 Ensure that updating the `Filter` property also updates the backing property.");
-                throw new NotImplementedException("🎯 Ensure that updating the `Filter` property also invokes `OnPropertyChanged` for `MainPageViewModel` so that databound controls update.");
-                throw new NotImplementedException("🎯 Ensure that updating the `Filter` property also invokes `OnPropertyChanged` for `MainPageViewModel.Todo` so that databound controls update.");
+                this._filter = value;
+                OnPropertyChanged(nameof(Filter));
+                OnPropertyChanged(nameof(Todos));
             }
         } // 0-all, 1-active, 2-inactives
 
@@ -67,11 +67,11 @@ namespace TodoApp.Shared.ViewModels
                 switch (Filter)
                 {
                     case 0:
-                        throw new NotImplementedException("🎯 Ensure that the `Todos` property returns the appropriate filtered list from `State` when accessed.");
+                        return _state.Todos;
                     case 1:
-                        throw new NotImplementedException("🎯 Ensure that the `Todos` property returns the appropriate filtered list from `State` when accessed.");
+                        return _state.ActiveTodos;
                     case 2:
-                        throw new NotImplementedException("🎯 Ensure that the `Todos` property returns the appropriate filtered list from `State` when accessed.");
+                        return _state.InactiveTodos;
                 }
 
                 throw new InvalidOperationException();
@@ -83,8 +83,8 @@ namespace TodoApp.Shared.ViewModels
             get => _newTodoText;
             set
             {
-                throw new NotImplementedException("🎯 Ensure that updating the `State` property also updates the backing property");
-                throw new NotImplementedException("🎯 Ensure that updating the `State` property also invokes `OnPropertyChanged` for `MainPageViewModel` so that databound controls update.");
+                this._newTodoText = value;
+                OnPropertyChanged(nameof(NewTodoText));
             }
         }
 
@@ -128,7 +128,7 @@ namespace TodoApp.Shared.ViewModels
                 var existing = todos.FirstOrDefault(t => t.KeyEquals(todo));
                 Todo newTodo = existing.WithText(newText);
 
-                throw new NotImplementedException("🎯 Implement `todos.Replace()`");
+                return todos.Replace(existing, newTodo);
             });
         }
 
@@ -138,7 +138,7 @@ namespace TodoApp.Shared.ViewModels
             {
                 var existing = todos.FirstOrDefault(t => t.KeyEquals(todo));
 
-                throw new NotImplementedException("🎯 Implement `todos.Remove()`");
+                return todos.Remove(existing);
             });
         }
     }
