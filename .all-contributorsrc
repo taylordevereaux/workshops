@@ -131,6 +131,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Arieldelossantos",
+      "name": "Ariel De Los Santos",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/34275909?v=4",
+      "profile": "http://Arieldelossantos.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JuliaVigo8",
+      "name": "JuliaVigo8",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11890609?v=4",
+      "profile": "https://github.com/JuliaVigo8",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 6,
